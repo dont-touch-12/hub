@@ -1,0 +1,386 @@
+<!-- Created by Monisha🌞 -->
+
+<!DOCTYPE html>
+<!--CREATED BY Monisha-->
+<!--This chatbot is create by using Botui Javascript Framework
+https://docs.botui.org/-->
+<!--song playlist copyrights to spotify-->
+<html>
+<head>
+  <title>bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css" />
+
+<link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/botui/build/botui.js"></script>  
+	<div class="botui-app-container" id="botui-app">
+		
+  <bot-ui></bot-ui>
+</div>
+<script>
+	const chitchat = {
+	loadingIndex: null,
+
+	input: {},
+
+	init: function() {
+		this.botui = new BotUI('botui-app');
+
+		this.start();
+
+	  
+	},
+
+   
+bolly:function(){
+this.botui.message.add({
+		delay:200,
+		loading:true,
+		content: 'click here to listen on spotify[![song image](https://i0.wp.com/a2zcity.me/wp-content/uploads/2016/04/00-Front-13.jpg?resize=469%2C469&ssl=1)](https://open.spotify.com/playlist/4nNVfQ9eWidZXkBKZN5li4?si=3lBF_AVXTF6hf4k02NQXzA)'
+		
+		})
+
+
+
+}   ,
+glob:function(){
+this.botui.message.add({
+		delay:200,
+		loading:true,
+		content: 'click here to Listen on spotify[![song image](https://www.dropbox.com/s/00s9j1dqdtoeod5/global.PNG?raw=1)](https://open.spotify.com/playlist/37i9dQZEVXbMDoHDwVN2tF?si=Abu7hrFpSQ2uB0Jro5L2mA)'
+		})
+
+
+
+}   ,
+usa:function(){
+this.botui.message.add({
+		delay:200,
+		loading:true,
+		content: 'click here to listen on spotify[![song image](https://www.dropbox.com/s/cj7ika5yu5k3rfu/usa.PNG?raw=1)](https://open.spotify.com/playlist/16wsvPYpJg1dmLhz0XTOmX?si=83VDWuUlS8CnWHOTroyWvw)'
+		})
+
+
+
+}   ,
+china:function(){
+this.botui.message.add({
+		delay:200,
+		loading:true,
+		content: 'click here to listen on spotify[![song image](https://www.dropbox.com/s/mzll25utojgt0lb/china.PNG?raw=1)](https://open.spotify.com/playlist/0n9pUnDvJEIavvDfGnJqJl?si=VfywJNtPQ9y6HUuJmPhpSw)'
+		})
+
+
+
+}   ,
+nigeria:function(){
+this.botui.message.add({
+		delay:200,
+		loading:true,
+		content: 'click here to listen on spotify[![song image](https://www.dropbox.com/s/85yxdgxy610ag8u/nigeria.PNG?raw=1)](https://open.spotify.com/playlist/6e1PM4vAlhabqCta00ebSg?si=Rt74thn6S4WACWN0ZoVxSQ)'
+		})
+
+
+
+}   ,
+kpop:function(){
+this.botui.message.add({
+		delay:200,
+		loading:true,
+		content: 'https://m.youtube.com/watch?v=smGrHgMGwtk'
+		})
+
+
+
+}   ,
+	start: function() {
+		this.botui.message
+			.bot({
+			   delay:1000,
+  loading:true,
+		content: 'Hi how can I help u Today'
+			})
+			.then(() => {
+				return this.botui.message.bot({
+					delay2: 1000,
+					content: 'What\'s your name ?'
+				});
+			})
+			.then(() => {
+				return this.botui.action.text({
+					 delay: 400,
+		action: {
+		  size: 18,
+		 
+		  sub_type: 'text',
+		  placeholder: 'type your name'
+		}
+				});
+			})
+			.then(res => {
+			  this.input.name = res.value;
+				this.botui.message.add({
+				 
+					content: 'Hi ' + this.input.name
+				});
+			})
+			.then(() => {
+				return this.botui.message.bot({
+				   delay:1000,
+  loading:true,
+		content: 'select your option to continue.'
+				});
+			})
+		   
+			.then(() => {
+				return this.botui.action.button({
+				  
+					delay: 1000,
+					action:[
+			{
+			text:'Global',
+			value:'glob'
+		  },
+		  {
+			  text:'Bollywood',
+			  value:'bolly'
+
+		  },
+		   {
+			  text:'USA',
+			  value:'usa'
+
+		  },
+		   {
+			  text:'k-pop',
+			  value:'kpop'
+
+		  },
+		   {
+			  text:'China',
+			  value:'china'
+
+		  },
+		   {
+			  text:'Nigeria',
+			  value:'nigeria'
+
+		  },
+			]
+
+				});
+			})
+			.then(res => {
+				this.botui.message
+					.bot({
+						delay: 200,
+						loading: true
+					})
+					
+				
+					.then(index => {
+						this.loadingIndex = index;
+
+						switch (res.value) {
+							case 'glob':
+								this.glob();
+								break;
+							case 'bolly':
+								this.bolly();
+								break;
+							case 'usa':
+								this.usa();
+								break;
+								  case 'kpop':
+								this.kpop();
+								break;
+								  case 'nigeria':
+								this.nigeria();
+								break;
+								  case 'china':
+								this.china();
+								break;
+							   
+							default:
+						   
+						}
+					});
+			});
+	  
+	}
+};
+
+
+chitchat.init();
+
+</script>
+   
+	<style type="text/css">
+	
+body {
+ background: -moz-linear-gradient(45deg, #0E3853 0%, #343E9D 55%, #43C9BB 100%);
+background: -webkit-linear-gradient(45deg, #0E3853 0%, #343E9D 55%, #43C9BB 100%);
+background: linear-gradient(45deg, #0E3853 0%, #343E9D 55%, #43C9BB 100%);
+  position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+
+#botui-app{
+	position: fixed;
+	display: flex;
+  top: 0%;
+
+	right: 0px;
+	left: 0px;
+	align-items: center;
+	justify-content: center;
+
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+$font-family: "Open Sans", sans-serif;
+$primary-color: black;
+
+.botui-container {
+
+	font-size: 12px;
+	background-color: black;
+	font-family: $font-family;
+}
+.botui-container{
+background-color:black;
+}
+.botui-messages-container {
+	padding: 6px 6px;
+}
+
+.botui-actions-container {
+	padding: 6px 6px;
+}
+
+.botui-message {
+	min-height: 10px;
+}
+
+.botui-message-content {
+	padding: 5px 15px;
+	border-radius: 15px;
+	color: darken($primary-color, 22%);
+	background-color: lighten($primary-color, 35%);
+
+	&.human {
+  
+		color: black;
+		background-color: #405de6;
+	}
+
+	&.text {
+		line-height: 1.3;
+	}
+	&.loading {
+		background-color: rgba(206, 206, 206, 0.5);
+		line-height: 1.3;
+		text-align: center;
+	}
+	&.embed {
+		padding: 5px;
+		border-radius: 5px;
+	}
+}
+
+.botui-message-content-link {
+	color: $primary-color;
+}
+
+.botui-actions-text-input {
+	border: 0;
+	outline: none;
+	border-radius: 0;
+	padding: 5px 7px;
+	font-family: $font-family;
+	background-color: transparent;
+	color: white;
+	border-bottom: 1px solid #fff;
+	&::-webkit-input-placeholder {
+		color: black;
+	}
+}
+
+
+.botui-actions-buttons-button {
+	border: 0;
+	color: white;
+	line-height: 1;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 7px 15px;
+	border-radius: 4px;
+	font-family: $font-family;
+	background: green;
+	box-shadow: 2px 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+
+.slide-fade-enter-active {
+	transition: all 0.3s ease;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+	opacity: 0;
+	transform: translateX(-10px);
+}
+
+
+.dot {
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 0.5rem;
+	display: inline-block;
+	background-color: $primary-color;
+	&:nth-last-child(1) {
+		margin-left: 0.3rem;
+		animation: loading 0.6s 0.3s linear infinite;
+	}
+	&:nth-last-child(2) {
+		margin-left: 0.3rem;
+		animation: loading 0.6s 0.2s linear infinite;
+	}
+	&:nth-last-child(3) {
+		animation: loading 0.6s 0.1s linear infinite;
+	}
+}
+
+@keyframes loading {
+	0% {
+		transform: translate(0, 0);
+		background-color: lighten($primary-color, 10%);
+	}
+
+	25% {
+		transform: translate(0, -3px);
+	}
+	50% {
+		transform: translate(0, 0px);
+		background-color: lighten($primary-color, 10%);
+	}
+	75% {
+		transform: translate(0, 3px);
+	}
+	100% {
+		transform: translate(0, 0px);
+	}
+}
+
+
+	</style>
+		
+</html>!
